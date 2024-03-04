@@ -323,9 +323,9 @@ static inline int commit_lock_file_to(struct lock_file *lk, const char *path)
  * for a `lock_file` object that has already been committed or rolled
  * back.
  */
-static inline void rollback_lock_file(struct lock_file *lk)
+static inline int rollback_lock_file(struct lock_file *lk)
 {
-	delete_tempfile(&lk->tempfile);
+	return delete_tempfile(&lk->tempfile);
 }
 
 #endif /* LOCKFILE_H */
